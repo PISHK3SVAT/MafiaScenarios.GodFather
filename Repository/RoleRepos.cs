@@ -8,32 +8,32 @@ using Domain;
 
 namespace Repository
 {
-    public class CardRepos
+    public class RoleRepos
     {
         private string _PicDir(string dir,string filename)
         {
             var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
             return Path.Combine(curr.FullName,"pics",dir,filename);
         }
-        public List<Card> MafiaCards()
+        public List<Role> MafiaCards()
         {
-            return new List<Card>
+            return new List<Role>
             {
-                new Card
+                new Role
                 {
                     Title = "پدر خوانده",
                     Side= Side.Mafia,
                     PicPath=_PicDir("Mafia","GodFather.jpg"),
                     Describtion= "او از یک بار شلیک شب لئون مصون است.یک جلیقه دارد.تعیین شلیک شب از طرف گروه به عهده پدرخوانده است و اگر از بازی خارج شود دیگر اعضا به جای او شلیک می کنند.پدرخوانده دارای توانایی حس ششم است و اگر در شب تصمیم بگیرد به جای شلیک از حس ششم استفاده کند باید نقش بازیکنی را درست حدس بزند و توسط گرداننده تائید شود.بازیکنی که پدرخوانده نقش او را درست حدس زده است سلاخی می شود یعنی اگر سپر داشته باشد یا دکتر او را سیو کرده باشد بازهم از بازی خارج می شود و آن شب توانایی وی اعمال نخواهد شد و پس از خروج از بازی توسط کنستانتین قابل احضار نمی باشد.استعلام پدرخوانده برای نوستراداموس شهروندی بوده ولی برای همشهری کین مافیایی و مثبت خواهد بود.",
                 },
-                new Card
+                new Role
                 {
                     Title = "ماتادور",
                     Side = Side.Mafia,
                     PicPath=_PicDir("Mafia","Matador.jpg"),
                     Describtion= "شب ها با تیم مافیا بیدار می شود و هر شب از توانایی خود استفاده می کند.در شب هر بازیکنی را نشان دهد توانایی شب او را آن شب از وی خواهد گرفت و فرد نشان شده اگر بیدار شود با ضربدر گرداننده مواجه می شود اما فردا مجدد می تواند از توانایی اش استفاده کند.ماتادور دو شب متوالی نمی تواند یک بازیکن را نشان کند.",
                 },
-                new Card
+                new Role
                 {
                     Title = "ساول گودمن",
                     Side = Side.Mafia,
@@ -42,9 +42,9 @@ namespace Repository
                 }
             };
         }
-        public Card IndependCard()
+        public Role IndependCard()
         {
-            return new Card
+            return new Role
             {
                 Title = "نوستراداموس",
                 Side = Side.Independ,
@@ -52,39 +52,39 @@ namespace Repository
                 Describtion = "در شب معارفه گرداننده او را بیدار می کند.نوستراداموس به انتخاب خود سه بازیکن را به گرداننده نشان می دهد.سپس گرداننده به او تعداد مافیا های موجود در میان این سه را اعلام می کند و پیش بینی او مبنی بر پیروزی یکی از دو ساید را از او می پرسد.نوستراداموس پیش بینی می کند شهروندان برنده خواهند شد یا مافیا ها.از این پس او برای برنده شدن سایدی که انتخاب کرده است تلاش می کند.بدون آنکه دیگر افراد بدانند وی به چه سایدی پیوسته است.اگر ساید مورد انتخابش برنده شد او نیز برنده است و اگر ساید مورد انتخابش بازنده شد او نیز بازنده خواهد شد.شلیک هیچ یک از دو ساید بر او موثر نخواهد بود و در شب کشته نخواهد شد.مگر با حس ششم پدرخوانده اما در روز با رای گیری از بازی خارج خواهد شد.استعلام پدرخوانده برای وی شهروندی خواهد بود.",
             };
         }
-        public List<Card> CitizensCards()
+        public List<Role> CitizensCards()
         {
-            return new List<Card>
+            return new List<Role>
             {
-                new Card
+                new Role
                 {
                     Title="دکتر واتسون",
                     Side=Side.Citizen,
                     PicPath=_PicDir("Citizen","DrWatson.jpg"),
                     Describtion="هرشب می تواند جان یک نفر چه عضو مافیا و چه عضو شهروندی را نجات دهد.جان خودش را یکبار می تواند در طول بازی نجات دهد ولی در نجات جان دیگران محدودیتی ندارد."
                 },
-                new Card
+                new Role
                 {
                     Title="لئون حرفه ای",
                     Side=Side.Citizen,
                     PicPath=_PicDir("Citizen","Leon.jpg"),
                     Describtion="هرشبی که بخواهد می تواند به یکی از اعضای تیم مافیا شلیک کند.اما با شلیک اشتباه به شهروندان به مجازات خودش کشته می شود و دکتر نمی تواند او را نجات دهد.لئون یک جلیقه دارد که یکبار از تیر نجات پیدا می کند.حداکثر دو شلیک دارد."
                 },
-                new Card
+                new Role
                 {
                     Title="همشهری کین",
                     Side=Side.Citizen,
                     PicPath=_PicDir("Citizen","Kane.jpg"),
                     Describtion="شهروندی است که در یکی از شب ها به انتخاب خود به دعوت گرداننده یکی از بازیکنان را نشان می دهد.اگر یک مافیا را درست نشان کرده باشد صبح روز بعد گرداننده ساید مافیای نشان شده را در جمع افشا می کند.و همشهری کین شب بعد کشته می شود.دکتر توانایی نجات او را ندارد.اما اگر نشانش از ساید مافیا نبود گرداننده هیچ چیزی اعلام نخواهد کرد و همشهری کین در بازی خواهد ماند و استعلامش از بین خواهد رفت.اگر او یا نشانش کشته شوند عملیات شب وی اجرا نشده و از بین نمی رود و همچنان باقی می ماند.استعلام پدرخوانده برای همشهری کین مافیایی است."
                 },
-                new Card
+                new Role
                 {
                     Title="کنستانتین",
                     Side=Side.Citizen,
                     PicPath=_PicDir("Citizen","Constantine.jpg"),
                     Describtion="گرداننده کنستانتین را بیدار می کند تا او به انتخاب خود و تنها یک بار یک نفر از بازیکنان اخراجی اعم از مافیا شهروند و یا مستقل را به بازی برگرداند.غیر از نقش های افشا شده.توانایی های بازیکن احضار شده ادامه پیدا می کند و از بین نمی رود و از نو نمی شود."
                 },
-                new Card
+                new Role
                 {
                     Title="شهروند ساده",
                     Side=Side.Citizen,
@@ -93,9 +93,9 @@ namespace Repository
                 },
             };
         }
-        public List<Card> All()
+        public List<Role> All()
         {
-            List<Card> result = new();
+            List<Role> result = new();
             result.AddRange(MafiaCards());
             result.Add(IndependCard());
             result.AddRange(CitizensCards());

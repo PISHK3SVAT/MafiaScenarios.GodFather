@@ -4,10 +4,10 @@
     {
         public required string Name { get; set; }
         public string? Nickname { get; set; }
-        public Card? Card { get; set; }
+        public Role? Card { get; set; }
     }
 
-    public class Card
+    public class Role
     {
         public required string Title { get; set; }
         public string? PicPath { get; set; }
