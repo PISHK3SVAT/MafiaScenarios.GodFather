@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 
+using BusinessLogic;
+
 using Endpoint.MVC.Models;
 
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,17 @@ namespace Endpoint.MVC.Controllers
             var players = new PlayerRepos().Family1().Select(p => new ShowPlayerVM
             {
                 Name = p.Name,
+            });
+            return View(players);
+        }
+
+        [HttpGet]
+        public IActionResult ShowPlayersWithRoles()
+        {
+            var players = new Game().Players.Select(p => new ShowPlayerWithRoleVM
+            {
+                PlayerName = p.Name,
+                RoleTitle = p.Role!.Title,
             });
             return View(players);
         }

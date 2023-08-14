@@ -4,7 +4,7 @@
     {
         public required string Name { get; set; }
         public string? Nickname { get; set; }
-        public Role? Card { get; set; }
+        public Role? Role { get; set; }
     }
 
     public class Role
