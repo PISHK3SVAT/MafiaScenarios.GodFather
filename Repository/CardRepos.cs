@@ -12,7 +12,7 @@ namespace Repository
     {
         private string _PicDir(string dir,string filename)
         {
-            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent;
+            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
             return Path.Combine(curr.FullName,"pics",dir,filename);
         }
         public List<Card> MafiaCards()
@@ -42,32 +42,63 @@ namespace Repository
                 }
             };
         }
-        public Card Independ()
+        public Card IndependCard()
         {
             return new Card
             {
                 Title = "نوستراداموس",
                 Side = Side.Independ,
+                PicPath=_PicDir("Independ", "Nostradamoos.jpg"),
                 Describtion = "در شب معارفه گرداننده او را بیدار می کند.نوستراداموس به انتخاب خود سه بازیکن را به گرداننده نشان می دهد.سپس گرداننده به او تعداد مافیا های موجود در میان این سه را اعلام می کند و پیش بینی او مبنی بر پیروزی یکی از دو ساید را از او می پرسد.نوستراداموس پیش بینی می کند شهروندان برنده خواهند شد یا مافیا ها.از این پس او برای برنده شدن سایدی که انتخاب کرده است تلاش می کند.بدون آنکه دیگر افراد بدانند وی به چه سایدی پیوسته است.اگر ساید مورد انتخابش برنده شد او نیز برنده است و اگر ساید مورد انتخابش بازنده شد او نیز بازنده خواهد شد.شلیک هیچ یک از دو ساید بر او موثر نخواهد بود و در شب کشته نخواهد شد.مگر با حس ششم پدرخوانده اما در روز با رای گیری از بازی خارج خواهد شد.استعلام پدرخوانده برای وی شهروندی خواهد بود.",
             };
         }
-        public List<Card> Citizens()
+        public List<Card> CitizensCards()
         {
             return new List<Card>
             {
                 new Card
                 {
-                    Title="",
+                    Title="دکتر واتسون",
                     Side=Side.Citizen,
-                    Describtion=""
-                }
+                    PicPath=_PicDir("Citizen","DrWatson.jpg"),
+                    Describtion="هرشب می تواند جان یک نفر چه عضو مافیا و چه عضو شهروندی را نجات دهد.جان خودش را یکبار می تواند در طول بازی نجات دهد ولی در نجات جان دیگران محدودیتی ندارد."
+                },
+                new Card
+                {
+                    Title="لئون حرفه ای",
+                    Side=Side.Citizen,
+                    PicPath=_PicDir("Citizen","Leon.jpg"),
+                    Describtion="هرشبی که بخواهد می تواند به یکی از اعضای تیم مافیا شلیک کند.اما با شلیک اشتباه به شهروندان به مجازات خودش کشته می شود و دکتر نمی تواند او را نجات دهد.لئون یک جلیقه دارد که یکبار از تیر نجات پیدا می کند.حداکثر دو شلیک دارد."
+                },
+                new Card
+                {
+                    Title="همشهری کین",
+                    Side=Side.Citizen,
+                    PicPath=_PicDir("Citizen","Kane.jpg"),
+                    Describtion="شهروندی است که در یکی از شب ها به انتخاب خود به دعوت گرداننده یکی از بازیکنان را نشان می دهد.اگر یک مافیا را درست نشان کرده باشد صبح روز بعد گرداننده ساید مافیای نشان شده را در جمع افشا می کند.و همشهری کین شب بعد کشته می شود.دکتر توانایی نجات او را ندارد.اما اگر نشانش از ساید مافیا نبود گرداننده هیچ چیزی اعلام نخواهد کرد و همشهری کین در بازی خواهد ماند و استعلامش از بین خواهد رفت.اگر او یا نشانش کشته شوند عملیات شب وی اجرا نشده و از بین نمی رود و همچنان باقی می ماند.استعلام پدرخوانده برای همشهری کین مافیایی است."
+                },
+                new Card
+                {
+                    Title="کنستانتین",
+                    Side=Side.Citizen,
+                    PicPath=_PicDir("Citizen","Constantine.jpg"),
+                    Describtion="گرداننده کنستانتین را بیدار می کند تا او به انتخاب خود و تنها یک بار یک نفر از بازیکنان اخراجی اعم از مافیا شهروند و یا مستقل را به بازی برگرداند.غیر از نقش های افشا شده.توانایی های بازیکن احضار شده ادامه پیدا می کند و از بین نمی رود و از نو نمی شود."
+                },
+                new Card
+                {
+                    Title="شهروند ساده",
+                    Side=Side.Citizen,
+                    PicPath=_PicDir("Citizen","Simple.jpg"),
+                    Describtion="نقش شهروند ساده کمک به هم تیمی های خود در تشخیص مافیا به درستی است و رای دادن با زرنگی به اعضای مافیاست. او در شب نقش خاصی را ایفا نمی کند و بیشتر به روند بازی و تیم شهروندی در پیروز شدن است.\r\n\r\nشهروند ساده میبایست سعی کند در روز مافیا ها را با دقت شناسایی کند و به آن ها رای دهد و در شب عمل خاصی را انجام نمی دهد."
+                },
             };
         }
         public List<Card> All()
         {
             List<Card> result = new();
             result.AddRange(MafiaCards());
-            result.Add(Independ());
+            result.Add(IndependCard());
+            result.AddRange(CitizensCards());
             return result;
         }
     }
