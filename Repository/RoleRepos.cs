@@ -15,7 +15,7 @@ namespace Repository
             var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
             return Path.Combine(curr.FullName,"pics",dir,filename);
         }
-        public List<Role> MafiaCards()
+        public List<Role> MafiaRoles()
         {
             return new List<Role>
             {
@@ -42,7 +42,7 @@ namespace Repository
                 }
             };
         }
-        public Role IndependCard()
+        public Role IndependRole()
         {
             return new Role
             {
@@ -52,7 +52,7 @@ namespace Repository
                 Describtion = "در شب معارفه گرداننده او را بیدار می کند.نوستراداموس به انتخاب خود سه بازیکن را به گرداننده نشان می دهد.سپس گرداننده به او تعداد مافیا های موجود در میان این سه را اعلام می کند و پیش بینی او مبنی بر پیروزی یکی از دو ساید را از او می پرسد.نوستراداموس پیش بینی می کند شهروندان برنده خواهند شد یا مافیا ها.از این پس او برای برنده شدن سایدی که انتخاب کرده است تلاش می کند.بدون آنکه دیگر افراد بدانند وی به چه سایدی پیوسته است.اگر ساید مورد انتخابش برنده شد او نیز برنده است و اگر ساید مورد انتخابش بازنده شد او نیز بازنده خواهد شد.شلیک هیچ یک از دو ساید بر او موثر نخواهد بود و در شب کشته نخواهد شد.مگر با حس ششم پدرخوانده اما در روز با رای گیری از بازی خارج خواهد شد.استعلام پدرخوانده برای وی شهروندی خواهد بود.",
             };
         }
-        public List<Role> CitizensCards()
+        public List<Role> CitizensRoles()
         {
             return new List<Role>
             {
@@ -96,9 +96,9 @@ namespace Repository
         public List<Role> All()
         {
             List<Role> result = new();
-            result.AddRange(MafiaCards());
-            result.Add(IndependCard());
-            result.AddRange(CitizensCards());
+            result.AddRange(MafiaRoles());
+            result.Add(IndependRole());
+            result.AddRange(CitizensRoles());
             return result;
         }
     }
