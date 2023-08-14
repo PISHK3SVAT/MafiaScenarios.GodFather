@@ -12,7 +12,7 @@ namespace Repository
     {
         private string _PicDir(string dir,string filename)
         {
-            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent.Parent.Parent;
+            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent;
             return Path.Combine(curr.FullName,"pics",dir,filename);
         }
         public List<Card> MafiaCards()
