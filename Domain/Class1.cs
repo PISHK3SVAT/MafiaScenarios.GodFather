@@ -25,11 +25,4 @@
         Mafia,
         Independ
     }
-    public class CardInstances
-    {
-
-       
-
-
-    }
 }
