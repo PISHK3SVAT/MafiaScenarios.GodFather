@@ -1,15 +1,10 @@
 ﻿namespace Domain
 {
-    public class Person
+    public class Player
     {
-        public long Id { get; set; }
         public required string Name { get; set; }
-        public required string Family { get; set; }
         public string? Nickname { get; set; }
-    }
-    public class Player : Person
-    {
-        public required Card Card { get; set; }
+        public Card? Card { get; set; }
     }
 
     public class Card
