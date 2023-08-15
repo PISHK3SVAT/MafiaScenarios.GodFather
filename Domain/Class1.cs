@@ -2,22 +2,111 @@
 {
     public class Player
     {
+        public int Id { get; set; }
         public required string Name { get; set; }
         public string? Nickname { get; set; }
-        public Role? Role { get; set; }
+        public RoleCard? Role { get; set; }
     }
 
-    public class Role
+    public class RoleCard
     {
         public required string Title { get; set; }
         public string? PicPath { get; set; }
         public string? Describtion { get; set; }
-        public Side Side { get; set; }
+        public virtual Side Side { get; set; }
+        public virtual SideRoles SideRole { get; set; }
+        //public abstract void Action();
+    }
+    public class GodFatherRole : RoleCard
+    {
+        public GodFatherRole()
+        {
+            Title = "پدر خوانده";
+            PicPath = RootPicPath.GetPicFrom("Mafia", "GodFather.jpg");
+            Describtion = "او از یک بار شلیک شب لئون مصون است.یک جلیقه دارد.تعیین شلیک شب از طرف گروه به عهده پدرخوانده است و اگر از بازی خارج شود دیگر اعضا به جای او شلیک می کنند.پدرخوانده دارای توانایی حس ششم است و اگر در شب تصمیم بگیرد به جای شلیک از حس ششم استفاده کند باید نقش بازیکنی را درست حدس بزند و توسط گرداننده تائید شود.بازیکنی که پدرخوانده نقش او را درست حدس زده است سلاخی می شود یعنی اگر سپر داشته باشد یا دکتر او را سیو کرده باشد بازهم از بازی خارج می شود و آن شب توانایی وی اعمال نخواهد شد و پس از خروج از بازی توسط کنستانتین قابل احضار نمی باشد.استعلام پدرخوانده برای نوستراداموس شهروندی بوده ولی برای همشهری کین مافیایی و مثبت خواهد بود.";
+            Side = Side.Mafia;
+            SideRole = SideRoles.GodFather;
+        }
+        //public void Action(GodFatherActions action)
+        //{
+        //    //
+        //}
+    }
+    public class DrWatson : RoleCard
+    {
+        private bool IsSaveSelf = false;
+        public DrWatson()
+        {
+            Title = "دکتر واتسون";
+            PicPath = RootPicPath.GetPicFrom("Citizen", "DrWatson.jpg");
+            Describtion = "هرشب می تواند جان یک نفر چه عضو مافیا و چه عضو شهروندی را نجات دهد.جان خودش را یکبار می تواند در طول بازی نجات دهد ولی در نجات جان دیگران محدودیتی ندارد.";
+            Side = Side.Citizen;
+            SideRole = SideRoles.DrWatson;
+        }
+        public ActionResult Action(List<Player> players, int selectedPlayerId)
+        {
+            var selectedPlayer = players.FirstOrDefault(p => p.Id == selectedPlayerId);
+            if (selectedPlayer is null)
+                return new ActionResult(false, "این بازیکن وجود ندارد!");
+            if (selectedPlayer.Role!.SideRole == SideRoles.DrWatson)
+            {
+                if (IsSaveSelf)
+                    return new ActionResult(false, "دکتر فقط یکبار میتواند خودش را نجات دهد");
+            }
+            return new ActionResult(true, $"را نجات دادید {selectedPlayer.Name}");
+        }
+    }
+    public class ActionResult
+    {
+        public ActionResult(bool isSuccess, string message)
+        {
+            IsSuccess = isSuccess;
+            Message = message;
+        }
+
+        public ActionResult(bool isSuccess, string message, int selectedPlayerId)
+        {
+            IsSuccess = isSuccess;
+            Message = message;
+            SelectedPlayerId = selectedPlayerId;
+        }
+
+        public bool IsSuccess { get; set;}
+        public string Message { get; set; }
+        public int SelectedPlayerId { get; set; }
+    }
+    public enum GodFatherActions
+    {
+        SixthSense,
+        Shoot,
+        Buy
     }
     public enum Side
     {
         Citizen,
         Mafia,
         Independ
+    }
+    public enum SideRoles
+    {
+        GodFather,
+        Matador,
+        SaulGoodman,
+        //
+        Nostradamus,
+        //
+        DrWatson,
+        Leon,
+        Constantine,
+        Kane,
+        Simple
+    }
+    public static class RootPicPath
+    {
+        public static string GetPicFrom(string dir, string filename)
+        {
+            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
+            return Path.Combine(curr.FullName, "pics", dir, filename);
+        }
     }
 }
