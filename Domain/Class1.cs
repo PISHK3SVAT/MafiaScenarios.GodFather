@@ -53,8 +53,32 @@
                 if (IsSaveSelf)
                     return new ActionResult(false, "دکتر فقط یکبار میتواند خودش را نجات دهد");
             }
-            return new ActionResult(true, $"را نجات دادید {selectedPlayer.Name}");
+            return new ActionResult(true, $"را نجات داد {selectedPlayer.Name}");
         }
+    }
+    public class Leon: RoleCard
+    {
+        private int ShotCount = 2;
+        public Leon()
+        {
+            Title = "لئون";
+            PicPath = RootPicPath.GetPicFrom("Citizen", "Leon.jpg");
+            Describtion = "هرشبی که بخواهد می تواند به یکی از اعضای تیم مافیا شلیک کند.اما با شلیک اشتباه به شهروندان به مجازات خودش کشته می شود و دکتر نمی تواند او را نجات دهد.لئون یک جلیقه دارد که یکبار از تیر نجات پیدا می کند.حداکثر دو شلیک دارد.";
+            Side = Side.Citizen;
+            SideRole = SideRoles.Leon;
+        }
+
+        public ActionResult Action(List<Player> players,int selectedPlayerId)
+        {
+            if (ShotCount == 0)
+                return new ActionResult(true, "لئون از 2 تیر خود استفاده کرده است");
+
+            var selectedPlayer = players.FirstOrDefault(p => p.Id == selectedPlayerId);
+            if (selectedPlayer is null)
+                return new ActionResult(false, "این بازیکن وجود ندارد!");
+
+            return new ActionResult(true, $"شلیک کرد {selectedPlayer.Name} به",selectedPlayerId);
+        } 
     }
     public class ActionResult
     {
