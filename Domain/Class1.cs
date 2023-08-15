@@ -52,6 +52,8 @@
             {
                 if (IsSaveSelf)
                     return new ActionResult(false, "دکتر فقط یکبار میتواند خودش را نجات دهد");
+                else
+                    IsSaveSelf = true;
             }
             return new ActionResult(true, $"را نجات داد {selectedPlayer.Name}");
         }
@@ -77,6 +79,7 @@
             if (selectedPlayer is null)
                 return new ActionResult(false, "این بازیکن وجود ندارد!");
 
+            ShotCount--;
             return new ActionResult(true, $"شلیک کرد {selectedPlayer.Name} به",selectedPlayerId);
         } 
     }
@@ -100,9 +103,11 @@
             if (selectedPlayer is null)
                 return new ActionResult(false, "این بازیکن وجود ندارد!");
 
+            CanInquiry = false;
             return new ActionResult(true, $"{selectedPlayer.Name} را انتخاب کرد", selectedPlayerId);
         }
     }
+    public class 
     public class ActionResult
     {
         public ActionResult(bool isSuccess, string message)
