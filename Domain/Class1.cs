@@ -143,7 +143,6 @@
         }
 
     }
-
     public class Nostradamus : RoleCard
     {
         public Nostradamus()
@@ -155,6 +154,7 @@
             SideRole = SideRoles.Nostradamus;
         }
     }
+
     public class ActionResult
     {
         public ActionResult(bool isSuccess, string message)
