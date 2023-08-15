@@ -107,7 +107,30 @@
             return new ActionResult(true, $"{selectedPlayer.Name} را انتخاب کرد", selectedPlayerId);
         }
     }
-    public class 
+    public class Constantine: RoleCard
+    {
+        private bool CanMakeAlive=true;
+        public Constantine()
+        {
+            Title = "کنستانتین";
+            PicPath = RootPicPath.GetPicFrom("Citizen", "Constantine.jpg");
+            Describtion = "گرداننده کنستانتین را بیدار می کند تا او به انتخاب خود و تنها یک بار یک نفر از بازیکنان اخراجی اعم از مافیا شهروند و یا مستقل را به بازی برگرداند.غیر از نقش های افشا شده.توانایی های بازیکن احضار شده ادامه پیدا می کند و از بین نمی رود و از نو نمی شود.";
+            Side= Side.Citizen;
+            SideRole= SideRoles.Constantine;
+        }
+        public ActionResult Action(List<Player> players, int selectedPlayerId)
+        {
+            if (!CanMakeAlive)
+                return new ActionResult(true, "مهلت استفاده از این قابلیت تمام شده است");
+
+            var selectedPlayer = players.FirstOrDefault(p => p.Id == selectedPlayerId);
+            if (selectedPlayer is null)
+                return new ActionResult(false, "این بازیکن وجود ندارد!");
+
+            CanMakeAlive = false;
+            return new ActionResult(true, $"{selectedPlayer.Name} را برای زنده کردن انتخاب کرد", selectedPlayerId);
+        }
+    }
     public class ActionResult
     {
         public ActionResult(bool isSuccess, string message)
