@@ -80,6 +80,29 @@
             return new ActionResult(true, $"شلیک کرد {selectedPlayer.Name} به",selectedPlayerId);
         } 
     }
+    public class Kane : RoleCard
+    {
+        bool CanInquiry = true;
+        public Kane()
+        {
+            Title = "همشهری کین";
+            PicPath = RootPicPath.GetPicFrom("Citizen", "Kane.jpg");
+            Describtion = "شهروندی است که در یکی از شب ها به انتخاب خود به دعوت گرداننده یکی از بازیکنان را نشان می دهد.اگر یک مافیا را درست نشان کرده باشد صبح روز بعد گرداننده ساید مافیای نشان شده را در جمع افشا می کند.و همشهری کین شب بعد کشته می شود.دکتر توانایی نجات او را ندارد.اما اگر نشانش از ساید مافیا نبود گرداننده هیچ چیزی اعلام نخواهد کرد و همشهری کین در بازی خواهد ماند و استعلامش از بین خواهد رفت.اگر او یا نشانش کشته شوند عملیات شب وی اجرا نشده و از بین نمی رود و همچنان باقی می ماند.استعلام پدرخوانده برای همشهری کین مافیایی است.";
+            Side = Side.Citizen;
+            SideRole = SideRoles.Kane;
+        }
+        public ActionResult Action(List<Player> players,int selectedPlayerId)
+        {
+            if (!CanInquiry)
+                return new ActionResult(true, "مهلت استعلام ایشان تمام شده است");
+
+            var selectedPlayer = players.FirstOrDefault(p => p.Id == selectedPlayerId);
+            if (selectedPlayer is null)
+                return new ActionResult(false, "این بازیکن وجود ندارد!");
+
+            return new ActionResult(true, $"{selectedPlayer.Name} را انتخاب کرد", selectedPlayerId);
+        }
+    }
     public class ActionResult
     {
         public ActionResult(bool isSuccess, string message)
