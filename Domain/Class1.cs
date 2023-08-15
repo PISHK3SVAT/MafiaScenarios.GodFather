@@ -131,6 +131,18 @@
             return new ActionResult(true, $"{selectedPlayer.Name} را برای زنده کردن انتخاب کرد", selectedPlayerId);
         }
     }
+    public class SimpleCitizen:RoleCard
+    {
+        public SimpleCitizen()
+        {
+            Title = "شهروند ساده";
+            PicPath = RootPicPath.GetPicFrom("Citizen", "Simple.jpg");
+            Describtion = "نقش شهروند ساده کمک به هم تیمی های خود در تشخیص مافیا به درستی است و رای دادن با زرنگی به اعضای مافیاست. او در شب نقش خاصی را ایفا نمی کند و بیشتر به روند بازی و تیم شهروندی در پیروز شدن است.\r\n\r\nشهروند ساده میبایست سعی کند در روز مافیا ها را با دقت شناسایی کند و به آن ها رای دهد و در شب عمل خاصی را انجام نمی دهد";
+            Side = Side.Citizen;
+            SideRole = SideRoles.Simple;
+        }
+
+    }
     public class ActionResult
     {
         public ActionResult(bool isSuccess, string message)
