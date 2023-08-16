@@ -22,6 +22,8 @@ namespace BusinessLogic
             {
                 //mafia
                 new GodFatherRole(),
+                new SaulGoodman(),
+                new Matador(),
                 //citizen
                 new DrWatson(),
                 new Leon(),
@@ -33,6 +35,16 @@ namespace BusinessLogic
                 //independ
                 new Nostradamus()
             };
+
+            var randomIndex = new Random();
+            for (int i = 0; i < Players.Count; i++)
+            {
+                var player = Players[i];
+                var roleIndex = randomIndex.Next(0, roles.Count);
+                var role = roles[roleIndex];
+                player.Role = role;
+                roles.Remove(role);
+            }
         }
     }
 }
