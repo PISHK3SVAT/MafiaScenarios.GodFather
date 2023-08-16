@@ -15,13 +15,11 @@ namespace BusinessLogic
         {
             dto.ForEach(d => Players.Add(new Player {
                 Name=d.Name,
-                Nickname=d.Nickname,
             }));
         }
     }
     public class InputPlayerDto
     {
         public required string Name { get; set; }
-        public string? Nickname { get; set; }
     }
 }

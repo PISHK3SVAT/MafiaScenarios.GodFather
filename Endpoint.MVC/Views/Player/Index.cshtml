@@ -1,0 +1,28 @@
+﻿@model List<Endpoint.MVC.Models.Player.ShowPlayerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">لیست بازیکنان</h1>
+
+<a asp-action="" class="btn btn-primary">پخش کردن نقش ها</a>
+<table dir="rtl" class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">نام</th>
+            <th scope="col">نقش</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th scope="row">@(i+1)</th>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].Role?.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>

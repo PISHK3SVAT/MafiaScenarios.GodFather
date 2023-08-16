@@ -1,16 +1,9 @@
 ﻿namespace Domain
 {
-    public class Player
-    {
-        public int Id { get; set; }
-        public required string Name { get; set; }
-        public string? Nickname { get; set; }
-        public RoleCard? Role { get; set; }
-    }
 
     public class RoleCard
     {
-        public required string Title { get; set; }
+        public string Title { get; set; }=string.Empty;
         public string? PicPath { get; set; }
         public string? Describtion { get; set; }
         public virtual Side Side { get; set; }

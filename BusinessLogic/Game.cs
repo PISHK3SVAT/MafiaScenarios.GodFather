@@ -14,7 +14,7 @@ namespace BusinessLogic
         public readonly int DefenceTimeLenght = 40;
         public bool IsChallengeAllow { get; private set; }
 
-        private Player SpeakStarter;
+        private Player? SpeakStarter;
         private List<RoleCard> Roles { get; set; }
         public Game()
         {
