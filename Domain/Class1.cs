@@ -25,6 +25,17 @@
         //    //
         //}
     }
+    public class SaulGoodman : RoleCard
+    {
+        public SaulGoodman()
+        {
+            Title = "ساول گودمن";
+            PicPath = RootPicPath.GetPicFrom("Mafia", "SaulGoodman.jpg");
+            Describtion = "";
+            Side=Side.Mafia;
+            SideRole = SideRoles.SaulGoodman;
+        }
+    }
     public class DrWatson : RoleCard
     {
         private bool IsSaveSelf = false;
