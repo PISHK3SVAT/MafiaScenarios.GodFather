@@ -7,25 +7,49 @@
         .blur {
             background: transparent;
             backdrop-filter: blur(10px);
+            cursor:pointer;
+        }
+        .card-shadow{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        .scrollbar {
+            float: left;
+            background: #F5F5F5;
+            overflow-y: scroll;
+        }
+        /*       ScrollBar 1        */
+
+        #scrollbar1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        #scrollbar1::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+
+        #scrollbar1::-webkit-scrollbar-thumb {
+            background-color: #ffc107;
         }
     </style>
 }
-<h1>PlayerRoles</h1>
-<a asp-action="AssignRoles" class="btn btn-primary mb-3" >نقش دهی دوباره</a>
+<h1 class="text-center">نقش های بازیکنان</h1>
+<a asp-action="AssignRoles" class="btn btn-info text-white mb-3">نقش دهی دوباره</a>
 <div class="row">
     @for (int i=0; i<Model.Count;i++)
     {
         var card = Model[i];
         <div class="col">
-            <div id="cart@(i+1)" dir="rtl" class="card mx-auto mb-3" style="width: 18rem;">
+            <div id="cart@(i+1)" dir="rtl" class="card mx-auto mb-5" style="width: 18rem; height:18 rem;">
                 <div id="blurCart@(i+1)" onclick="ShowHideCard('blurCart@(i+1)')" class="w-100 h-100 position-absolute blur d-flex justify-content-center align-items-center">
-                    <p class="bg-info text-white p-2 w-100 text-center" bluring>برای نمایش ضربه بزنید</p>
+                    <p class="bg-warning text-white p-2 w-100 text-center">برای نمایش ضربه بزنید</p>
                 </div>
-                <img src="@card.PicUrl" class="card-img-top" alt="...">
-                <div class="card-body overflow-auto" style="height:300px">
+                <img src="@card.PicUrl" class="card-img-top" alt="@card.RoleTitle">
+                <div class="card-body overflow-auto scrollbar" id="scrollbar1" style="height:250px">
                     <h5 class="card-title">@card.Name - @card.RoleTitle</h5>
-                    <p class="card-text text-justify">@card.Describtion</p>
-                    <button href="#" class="btn btn-primary" onclick="ShowHideCard('blurCart@(i+1)')">مخفی کردن</button>
+                    <p class="card-text text-justify" >@card.Describtion</p>
+                    <button href="#" class="btn btn-warning" onclick="ShowHideCard('blurCart@(i+1)')">مخفی کردن</button>
                 </div>
             </div>
         </div>
@@ -33,16 +57,11 @@
 </div>
 @section Scripts{
     <script>
-        //Array.from(document.querySelectorAll("[bluring]")).forEach(card=>{
-        //    card.addEventListener('click',e=>{
-        //        e.target.classList.toggle('blur');
-        //        e.target.classList.toggle('d-none');
-        //    });
-        //});
         function ShowHideCard(cardId){
             const card = document.getElementById(cardId);
             card.classList.toggle('blur');
             card.classList.toggle('d-none');
+            card.parentElement.classList.toggle('card-shadow');
         }
     </script>
 }
