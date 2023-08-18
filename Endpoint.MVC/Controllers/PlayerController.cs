@@ -62,11 +62,5 @@ namespace Endpoint.MVC.Controllers
             PlayerService.InputPlayers(inputDtos);
             return View();
         }
-
-        public IActionResult AssignRoles()
-        {
-
-            return RedirectToAction(nameof(Index));
-        }
     }
 }

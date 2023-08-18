@@ -221,8 +221,8 @@
     {
         public static string GetPicFrom(string dir, string filename)
         {
-            var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
-            return Path.Combine(curr.FullName, "pics", dir, filename);
+            //var curr = new DirectoryInfo(Environment.CurrentDirectory)!.Parent!.Parent!.Parent!;
+            return Path.Combine("\\Pics", dir, filename);
         }
     }
 }

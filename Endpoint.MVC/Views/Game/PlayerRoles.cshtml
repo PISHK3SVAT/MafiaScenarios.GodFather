@@ -1,0 +1,48 @@
+﻿@model List<Endpoint.MVC.Models.Game.PlayerRoleViewModel>
+@{
+    ViewData["Title"] = "PlayerRoles";
+}
+@section Styles{
+    <style>
+        .blur {
+            background: transparent;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+}
+<h1>PlayerRoles</h1>
+<a asp-action="AssignRoles" class="btn btn-primary mb-3" >نقش دهی دوباره</a>
+<div class="row">
+    @for (int i=0; i<Model.Count;i++)
+    {
+        var card = Model[i];
+        <div class="col">
+            <div id="cart@(i+1)" dir="rtl" class="card mx-auto mb-3" style="width: 18rem;">
+                <div id="blurCart@(i+1)" onclick="ShowHideCard('blurCart@(i+1)')" class="w-100 h-100 position-absolute blur d-flex justify-content-center align-items-center">
+                    <p class="bg-info text-white p-2 w-100 text-center" bluring>برای نمایش ضربه بزنید</p>
+                </div>
+                <img src="@card.PicUrl" class="card-img-top" alt="...">
+                <div class="card-body overflow-auto" style="height:300px">
+                    <h5 class="card-title">@card.Name - @card.RoleTitle</h5>
+                    <p class="card-text text-justify">@card.Describtion</p>
+                    <button href="#" class="btn btn-primary" onclick="ShowHideCard('blurCart@(i+1)')">مخفی کردن</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts{
+    <script>
+        //Array.from(document.querySelectorAll("[bluring]")).forEach(card=>{
+        //    card.addEventListener('click',e=>{
+        //        e.target.classList.toggle('blur');
+        //        e.target.classList.toggle('d-none');
+        //    });
+        //});
+        function ShowHideCard(cardId){
+            const card = document.getElementById(cardId);
+            card.classList.toggle('blur');
+            card.classList.toggle('d-none');
+        }
+    </script>
+}

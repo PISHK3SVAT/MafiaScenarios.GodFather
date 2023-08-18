@@ -7,6 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Pics\Citizen\Constantine.jpg" />
+    <Content Remove="wwwroot\Pics\Citizen\DrWatson.jpg" />
+    <Content Remove="wwwroot\Pics\Citizen\Kane.jpg" />
+    <Content Remove="wwwroot\Pics\Citizen\Leon.jpg" />
+    <Content Remove="wwwroot\Pics\Citizen\Simple.jpg" />
+    <Content Remove="wwwroot\Pics\Independ\Nostradamus.jpg" />
+    <Content Remove="wwwroot\Pics\Mafia\GodFather.jpg" />
+    <Content Remove="wwwroot\Pics\Mafia\Matador.jpg" />
+    <Content Remove="wwwroot\Pics\Mafia\SaulGoodman.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Pics\Citizen\Constantine.jpg" />
+    <None Include="wwwroot\Pics\Citizen\DrWatson.jpg" />
+    <None Include="wwwroot\Pics\Citizen\Kane.jpg" />
+    <None Include="wwwroot\Pics\Citizen\Leon.jpg" />
+    <None Include="wwwroot\Pics\Citizen\Simple.jpg" />
+    <None Include="wwwroot\Pics\Independ\Nostradamus.jpg" />
+    <None Include="wwwroot\Pics\Mafia\GodFather.jpg" />
+    <None Include="wwwroot\Pics\Mafia\Matador.jpg" />
+    <None Include="wwwroot\Pics\Mafia\SaulGoodman.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
