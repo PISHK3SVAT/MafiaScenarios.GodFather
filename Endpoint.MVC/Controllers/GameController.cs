@@ -39,5 +39,16 @@ namespace Endpoint.MVC.Controllers
             }).ToList();
             return View(vm);
         }
+        [HttpGet]
+        public IActionResult Day()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Night()
+        {
+            return View();
+        }
     }
 }

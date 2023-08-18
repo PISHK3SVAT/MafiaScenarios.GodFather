@@ -1,0 +1,22 @@
+﻿@model Endpoint.MVC.Views.Game.DayViewModel
+
+@{
+    ViewData["Title"] = "روز";
+}
+@section Styles{
+}
+@*<h1 class="text-center">@Model.DayOf روز</h1>*@
+<div id="test"></div>
+@*<div id="countdown">
+    <div id="countdown-number"></div>
+    <svg>
+        <circle r="@r" cx="@r" cy="@r"></circle>
+    </svg>
+</div>*@
+@section Scripts{
+    <script src="~/js/timer.js"></script>
+    <script>
+        createCountDown('test',100,5,20,'blue','red');
+
+    </script>
+}

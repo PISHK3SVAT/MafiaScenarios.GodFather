@@ -18,7 +18,7 @@ namespace Endpoint.MVC.Controllers
                     Title=p.Role?.Title??string.Empty,
                     PicPath=p.Role?.PicPath??string.Empty,
                     Describtion=p.Role?.Describtion ?? string.Empty,
-                    Side= p.Role.Side,
+                    Side= p.Role!.Side,
                     SideRole = p.Role.SideRole
                 }
             }).ToList();
