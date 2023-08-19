@@ -1,4 +1,4 @@
-﻿namespace Endpoint.MVC.Views.Game
+﻿namespace Endpoint.MVC.Models.Game
 {
     public class DayViewModel
     {
@@ -9,7 +9,7 @@
     public class DayPlayerViewModel
     {
         public string Name { get; set; } = string.Empty;
-        public byte InconmeVoteCount { get; set; }
+        public byte IncomeVoteCount { get; set; }
         public bool CanHaveChallenge { get; set; } = true;
         public byte WarningCount { get; set; }
 

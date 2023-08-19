@@ -1,22 +1,98 @@
-﻿@model Endpoint.MVC.Views.Game.DayViewModel
-
-@{
+﻿@{
     ViewData["Title"] = "روز";
 }
 @section Styles{
 }
-@*<h1 class="text-center">@Model.DayOf روز</h1>*@
-<div id="test"></div>
-@*<div id="countdown">
-    <div id="countdown-number"></div>
-    <svg>
-        <circle r="@r" cx="@r" cy="@r"></circle>
-    </svg>
-</div>*@
-@section Scripts{
-    <script src="~/js/timer.js"></script>
-    <script>
-        createCountDown('test',100,5,20,'blue','red');
+<h1 class="text-center">روز اول</h1>
+<div class="row">
+    <div class="col-md-2">
+        <div id="countDown"></div>
+        <button class="btn btn-info mt-2" id="countDownBtn">شروع صحبت</button>
+    </div>
+    <div class="col">
+        <p>نوبت محمد جواد است</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table dir="rtl" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">نام</th>
+                    <th scope="col">نقش</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>محمد جواد</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>رقیه</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>آسیه</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>معصومه</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>مریم</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>زینب</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>مرضیه</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>مهسا</td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>لیلا</td>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>ریحانه</td>
+                </tr>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>زهرا</td>
+                </tr>
 
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/timer.js" asp-append-version="true"></script>
+    <script>
+        createCountDown('countDown', 40, 40, 10, 'red', 'black');
+
+        let isStart=false;
+        let intervalId;
+        const countDownBtn = document.getElementById('countDownBtn');
+        countDownBtn.addEventListener('click',e=>{
+            if (!isStart){
+               intervalId = startCountDown('countDown');
+                countDownBtn.innerHTML = 'توقف صحبت';
+            }
+            else{
+                stopCountDown(intervalId);
+                intervalId=null;
+                countDownBtn.innerHTML = 'شروع صحبت';
+            }
+            isStart=!isStart;
+        });
     </script>
 }

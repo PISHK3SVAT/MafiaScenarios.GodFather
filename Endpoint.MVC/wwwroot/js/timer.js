@@ -8,7 +8,28 @@
 
 //    countdownNumberEl.textContent = countdown;
 //}, 1000);
+let circleAnimation;
 
+function startCountDown(containerId) {
+    circleAnimation.play();
+
+    const container = document.getElementById(containerId);
+    const span = container.lastChild;
+    let value = span.innerHTML;
+    let countDown = value;
+    var localIntervalId = setInterval(() => {
+        countDown--;
+        if (countDown == 0)
+            clearInterval(localIntervalId);
+
+        span.innerHTML = countDown;
+    }, 1000);
+    return localIntervalId;
+}
+function stopCountDown(intervalId) {
+    circleAnimation.pause();
+    clearInterval(intervalId);
+}
 function createCountDown(containerId,radius,value,strokeWidth='10',strokeColor='red',strokeBgColor='black') {
     const container = document.getElementById(containerId);
     const ns = 'http://www.w3.org/2000/svg';
@@ -52,22 +73,22 @@ function createCountDown(containerId,radius,value,strokeWidth='10',strokeColor='
     container.appendChild(span);
 
     //circle animation
-    circle.animate(
+    circleAnimation = circle.animate(
     {
         strokeDashoffset: [0, radius*6]
     },
     {
         duration: value*1000,
-        iterations: 'Infinity',
+        iterations: '1',
         direction: 'normal',
         easing: 'linear',
 
-    });
+        });
+    circleAnimation.pause();
+    //let countDown = value;
+    //setInterval(() => {
+    //    countDown = --countDown <= 0 ? value : countDown;
 
-    let countDown = value;
-    setInterval(() => {
-        countDown = --countDown <= 0 ? value : countDown;
-
-        span.innerHTML = countDown;
-    },1000)
+    //    span.innerHTML = countDown;
+    //},1000)
 }
